@@ -1,6 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'kotlin'
+apply plugin: 'application'
 
 group = 'fr.theshark34'
 version = '1.0.0-BETA'
@@ -9,7 +11,19 @@ archivesBaseName = 'autobuild'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+mainClassName = 'fr.theshark34.autobuild.Main'
+
 compileJava.options.encoding = 'UTF-8'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.0-beta-4584'
+    }
+}
 
 repositories {
     mavenCentral()
@@ -22,6 +36,10 @@ repositories {
 dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'net.wytrem:wylog:1.0.0'
+
     compile 'org.apache.httpcomponents:httpcore:4.4.4'
     compile 'org.apache.httpcomponents:httpcore-nio:4.4.4'
+    compile 'org.apache.httpcomponents:httpasyncclient:4.1.1'
+
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-4584'
 }
