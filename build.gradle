@@ -6,7 +6,7 @@ apply plugin: 'application'
 
 group = 'fr.theshark34'
 version = '1.0.0-BETA'
-archivesBaseName = stick
+archivesBaseName = 'stick'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -35,7 +35,7 @@ repositories {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
-    compile 'net.wytrem:wylog:1.0.0'
+    compile 'net.wytrem:wylog:1.2'
 
     compile 'org.apache.httpcomponents:httpcore:4.4.4'
     compile 'org.apache.httpcomponents:httpcore-nio:4.4.4'

@@ -1,11 +1,11 @@
-package fr.theshark34.autobuild
+package fr.theshark34.stick
 
 import org.treeweb.WebApplication
 
-class Autobuild : WebApplication()
+class Stick : WebApplication()
 {
     override val name: String
-        get() = "Autobuild"
+        get() = "Stick"
 
     override val version: String
         get() = "1.0.0-BETA"
@@ -14,16 +14,16 @@ class Autobuild : WebApplication()
         get() = 24660
 
     override val controllersPackage: String
-        get() = "fr.Theshark34.autobuild.controllers"
+        get() = "fr.Theshark34.stick.controllers"
 
     override val viewsPackage: String
-        get() = "fr.Theshark34.autobuild.views"
+        get() = "fr.Theshark34.stick.views"
 
     override val middlewaresPackage: String
-        get() = "fr.Theshark34.autobuild.middlewares"
+        get() = "fr.theshark34.stick.middlewares"
 
     override val modelsPackage: String
-        get() = "fr.Theshark34.autobuild.models"
+        get() = "fr.Theshark34.stick.models"
 
     override fun onStart()
     {
