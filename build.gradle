@@ -6,12 +6,12 @@ apply plugin: 'application'
 
 group = 'fr.theshark34'
 version = '1.0.0-BETA'
-archivesBaseName = 'autobuild'
+archivesBaseName = stick
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-mainClassName = 'fr.theshark34.autobuild.Main'
+mainClassName = 'fr.theshark34.stick.Main'
 
 compileJava.options.encoding = 'UTF-8'
 
