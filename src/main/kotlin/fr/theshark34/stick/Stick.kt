@@ -1,9 +1,15 @@
+@file:JvmName("Stick")
+
 package fr.theshark34.stick
 
+import net.wytrem.logging.Logger
+import net.wytrem.logging.LoggerFactory
 import org.treeweb.WebApplication
 
 class Stick : WebApplication()
 {
+    private final val logger : Logger = LoggerFactory.getLogger("Stick")
+
     override val name: String
         get() = "Stick"
 
@@ -14,19 +20,19 @@ class Stick : WebApplication()
         get() = 24660
 
     override val controllersPackage: String
-        get() = "fr.Theshark34.stick.controllers"
+        get() = "fr.theshark34.stick.controllers"
 
     override val viewsPackage: String
-        get() = "fr.Theshark34.stick.views"
+        get() = "fr.theshark34.stick.views"
 
     override val middlewaresPackage: String
         get() = "fr.theshark34.stick.middlewares"
 
     override val modelsPackage: String
-        get() = "fr.Theshark34.stick.models"
+        get() = "fr.theshark34.stick.models"
 
     override fun onStart()
     {
-
+        router.get("/hello/:name", "TestController@yolo");
     }
 }

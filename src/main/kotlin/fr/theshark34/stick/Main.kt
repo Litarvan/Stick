@@ -1,8 +1,10 @@
+@file:JvmName("Main")
+
 package fr.theshark34.stick
 
-var stick: Stick = Stick()
+val stick: Stick = Stick()
 
 fun main(args: Array<String>)
 {
-    stick.start();
+    stick.start()
 }

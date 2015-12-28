@@ -1,5 +1,8 @@
+@file:JvmName("ControllerRouteAction")
+
 package org.treeweb.routing
 
+import org.apache.http.HttpResponse
 import org.treeweb.WebApplication
 import java.lang.reflect.Method
 import kotlin.collections.dropLastWhile
@@ -33,18 +36,18 @@ class ControllerRouteAction : RouteAction
         }
         catch (e: ClassNotFoundException)
         {
-            throw IllegalArgumentException("Can't find controller : " + controllerPath)
+            throw ControllerNotFoundException(controllerPath)
         }
 
         val method: Method
 
         try
         {
-            method = controller.getDeclaredMethod(methodString)
+            method = controller.getDeclaredMethod(methodString, RouteCallingEvent::class.java, Array<String>::class.java)
         }
         catch (e: NoSuchMethodException)
         {
-            throw IllegalArgumentException("Can't find method : $methodString in controller $controllerPath")
+            throw ControllerMethodNotFoundException(controllerPath, methodString)
         }
 
         this.controller = controller
@@ -58,9 +61,14 @@ class ControllerRouteAction : RouteAction
         this.method = method
     }
 
-    override fun onCalled()
+    override fun onCalled(event : RouteCallingEvent, args : Array<String>) : HttpResponse
     {
         val controllerInstance = controller.newInstance()
-        method.invoke(controllerInstance)
+        var result = method.invoke(controllerInstance, event, args)
+
+        if (result is HttpResponse)
+            return result
+        else
+            throw NoResponseException(controller.simpleName)
     }
 }
